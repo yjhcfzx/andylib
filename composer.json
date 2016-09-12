@@ -1,0 +1,21 @@
+{
+    "name": "tz7/andylib",
+    "description": "andy lib",
+    "type": "lib",
+    "authors": [
+        {
+            "name": "Andy Zheng",
+            "email": "andyzheng84@126.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AndyLib\\Utility\\": "src/",
+            "HelloWorld\\": "src/"
+        }
+    }
+}
