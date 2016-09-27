@@ -17,7 +17,7 @@ class utility {
     static public function test(){
         echo 1;
     }
-    function language($label, $app = ''){
+    static function language($label, $app = ''){
         switch($app){
             case  'ci':
                 return $label;
@@ -45,10 +45,10 @@ class utility {
         $label = $contoller['label'];
         $name = $contoller['name'];
         if ($type == 'textarea') {
-            $html = "<label class='control-label'> " . $this->language($label) . "   </label>
+            $html = "<label class='control-label'> " . utility::language($label) . "   </label>
 <div class='operations gradient'>
     <button id='{$name}_insert_picture_top' type='button'  unselectable='on' class='btn btn-xs btn-default  image_trigger' aria-label='Left Align'>
-        <span class='glyphicon glyphicon-picture'> " . $this->language('insert_picture') . "
+        <span class='glyphicon glyphicon-picture'> " . utility::language('insert_picture') . "
     </button>
 </div>
 <input type='file' id='{$name}_hidden_file' style='display:none;' />
@@ -57,7 +57,7 @@ class utility {
 
 <div class='operations gradient'>
     <button id='{$name}_insert_picture_bottom' type='button'   unselectable='on' class='btn btn-xs btn-default  image_trigger' aria-label='Left Align'>
-        <span class='glyphicon glyphicon-picture'> " . $this->language('insert_picture') . "
+        <span class='glyphicon glyphicon-picture'> " . utility::language('insert_picture') . "
     </button>
 </div>";
             $html .= "<script> $('#{$name}_hidden_file').change(function(){
@@ -68,7 +68,7 @@ class utility {
             return $html;
         } else {
             $html = '<div class="form-group">';
-            $html .= '<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><label class="control-label" for="' . $name . '">' . $this->language($label) . '</label></div>';
+            $html .= '<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><label class="control-label" for="' . $name . '">' . utility::language($label) . '</label></div>';
             $html .= ' <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10 ' . $input_wrapper_class . '">';
 
             switch ($type) {
@@ -87,7 +87,7 @@ class utility {
                     $multiple = (isset($attribute['multiple']) && $attribute['multiple'] ) ? TRUE : FALSE;
                     $element_html = '<select ' . ($multiple ? ' multiple="multiple" ' : '') .
                             ' data-placeholder="' . ( isset($attribute['placeholder']) ?
-                                    $this->language($attribute['placeholder']) : $this->language('choose_or_create') ) . '..."  class="'
+                                    utility::language($attribute['placeholder']) : utility::language('choose_or_create') ) . '..."  class="'
                             . $class . ' chzn-select"  name= "' . ($multiple ? $name . '[]' : $name ) . '" id="' . $name . '" >';
                     $element_html .= ' <option value=""></option>';
                     if (isset($attribute['options']) && $attribute['options']) {
@@ -113,7 +113,7 @@ class utility {
         $html = '';
         $html .= "<div class='legend  orange' id='legend_{$name}'>
         <button  type='button'  class='btn btn-default my-orange' aria-label='Left Align'>
-                <span class='glyphicon glyphicon-bookmark'> " . $this->language($name) .
+                <span class='glyphicon glyphicon-bookmark'> " . utility::language($name) .
                 " </button>
      </div>";
         return $html;
@@ -135,17 +135,17 @@ class utility {
             }
         }
         $html = ' <ol class="breadcrumb">
-        <li><a href="' . $CI->config->item('base_url') . '">' . $this->language('home') . '</a></li>';
+        <li><a href="' . $CI->config->item('base_url') . '">' . utility::language('home') . '</a></li>';
         if ($method == 'index') {
-            $html .= '   <li class="active">' . $this->language($route . '_list') . '</li>';
+            $html .= '   <li class="active">' . utility::language($route . '_list') . '</li>';
         } else {
             $seg = $inst->uri->segment(3);
-            $html .= '<li><a href="' . $CI->config->item('base_url') . $route . '">' . $this->language($route . '_list') . '</a></li>';
+            $html .= '<li><a href="' . $CI->config->item('base_url') . $route . '">' . utility::language($route . '_list') . '</a></li>';
             if ($action == 'edit') {
-                $html .= '<li><a href="' . $CI->config->item('base_url') . $route . '/' . $method . ($seg ? '/' . $seg : '') . '">' . $this->language($route . '_' . $method) . '</a></li>';
-                $html .= '   <li class="active">' . $this->language($route . '_' . $action) . '</li>';
+                $html .= '<li><a href="' . $CI->config->item('base_url') . $route . '/' . $method . ($seg ? '/' . $seg : '') . '">' . utility::language($route . '_' . $method) . '</a></li>';
+                $html .= '   <li class="active">' . utility::language($route . '_' . $action) . '</li>';
             } else {
-                $html .= '   <li class="active">' . $this->language($route . '_' . $method) . '</li>';
+                $html .= '   <li class="active">' . utility::language($route . '_' . $method) . '</li>';
             }
         }
         $html .= '</ol>';

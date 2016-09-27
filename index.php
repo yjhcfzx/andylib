@@ -12,7 +12,8 @@ class abc{
 echo 'abc';
 $c = new abc();
 $c->p();
-
+ $controller = array('name'=>'title','label'=>'title','type'=>'text');
+echo utility::my_generate_controller($controller);die;
 echo HelloWorld\SayHello::world();
 
 ?>
